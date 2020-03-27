@@ -9,22 +9,18 @@ metadata:
     description: GlusterFS DaemonSet
     tags: glusterfs
 spec:
-  selector:
-    matchLabels:
-      name: glusterfs
   template:
     metadata:
       name: glusterfs
       labels:
         glusterfs: pod
         glusterfs-node: pod
-        name: glusterfs
     spec:
       nodeSelector:
         storagenode: glusterfs
       hostNetwork: true
       containers:
-      - image: daocloud.io/daocloud/gluster-centos:latest
+      - image: gluster/gluster-centos:latest
         imagePullPolicy: IfNotPresent
         name: glusterfs
         env:
